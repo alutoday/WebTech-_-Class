@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Danh sách cập nhật sinh viên</title>
+  </head>
+  <body>
+    <h2>Chọn sinh viên để cập nhật</h2>
+       
+    <?php
+    if (!empty($studentList)) { 
+        $i = 1;
+        foreach ($studentList as $student) {
+            // Sửa cú pháp cho thẻ <a> và echo
+            echo "<p>" . $i . ". <a href=\"../Controller/C_Student.php?action=update&id=" . $student->id . "\">" . $student->name . "</a></p>";
+            $i++;
+        }
+    } else {
+        echo "<p>No students found.</p>"; 
+    }
+    ?>
+    <p><a href="../../index.php">Home page</a></p>  </body>
+</html>

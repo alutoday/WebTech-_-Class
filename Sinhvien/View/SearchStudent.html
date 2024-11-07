@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tìm Kiếm Thông Tin Nhân Viên</title>
+  </head>
+  <body>
+    <form action="../Controller/C_Student.php?action=search" method="POST">
+      <h2>Tìm Kiếm Thông Tin Sinh Viên</h2>
+      <label
+        ><input type="radio" name="searchType" value="id" checked /> ID</label
+      >
+      <label><input type="radio" name="searchType" value="name" /> Name</label>
+      <label><input type="radio" name="searchType" value="age" /> Age</label>
+      <label
+        ><input type="radio" name="searchType" value="university" />
+        University</label
+      >
+      <br /><br />
+      <label>Nhập vào thông tin:</label>
+      <input type="text" name="searchQuery" required />
+      <br /><br />
+      <button type="submit">OK</button>
+      <button type="reset">Reset</button>
+    </form>
+
+    <h2>Kết quả tìm kiếm</h2>
+    <?php if (isset($studentList)): ?>
+    <table border="1" width="100%">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tên</th>
+          <th>Tuổi</th>
+          <th>Trường Đại Học</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php if (!empty($studentList)): ?>
+        <?php foreach ($studentList as $student): ?>
+        <tr>
+          <td><?php echo $student->id?></td>
+          <td><?php echo $student->name?></td>
+          <td><?php echo $student->age?></td>
+          <td><?php echo $student->university?></td>
+        </tr>
+        <?php endforeach; ?>
+        <?php else: ?>
+        <tr>
+          <td colspan="4">Không tìm thấy kết quả</td>
+        </tr>
+        <?php endif; ?>
+      </tbody>
+    </table>
+    <?php endif; ?>
+    <p><a href="../index.php">Home page</a></p>
+  </body>
+</html>
