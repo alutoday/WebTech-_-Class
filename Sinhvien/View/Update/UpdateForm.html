@@ -6,7 +6,13 @@
   <body>
     <h2>Cập Nhật Thông Tin Sinh Viên</h2>
     <form action="../Controller/C_Student.php?action=update" method="post">
-      <input type="hidden" name="id" value="<?php echo $student->id; ?>" />
+      <label for="id">ID:</label>
+      <input
+        type="number"
+        name="id"
+        value="<?php echo $student->id; ?>"
+        readonly
+      /><br /><br />
 
       <label for="name">Tên:</label>
       <input

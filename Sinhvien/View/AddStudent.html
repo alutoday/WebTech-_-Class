@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -5,7 +6,17 @@
   </head>
   <body>
     <h2>Thêm Sinh Viên Mới</h2>
-    <form action="../Controller/C_Student.php?action=add" method="post">
+
+    <form
+      action="../Controller/C_Student.php?action=add"
+      method="post"
+      id="addStudentForm"
+    >
+      <label for="id">ID:</label>
+      <input type="text" name="id" id="id" required onblur="checkIdUnique()" />
+      <span id="idError" style="color: red"></span>
+      <br /><br />
+
       <label for="name">Tên:</label>
       <input type="text" name="name" required /><br /><br />
 
@@ -17,6 +28,28 @@
 
       <button type="submit">Thêm</button>
     </form>
+
     <p><a href="../index.php">Home page</a></p>
+    <iframe id="checkIdFrame" style="display: none"></iframe>
+
+    <script>
+      function checkIdUnique() {
+        const studentId = document.getElementById("id").value;
+        const iframe = document.getElementById("checkIdFrame");
+
+        iframe.src = `../Controller/C_Student.php?action=add&checkId=${studentId}`;
+
+        iframe.onload = function () {
+          const response = iframe.contentDocument.body.innerText;
+          const idError = document.getElementById("idError");
+
+          if (response.trim()) {
+            idError.innerText = response;
+          } else {
+            idError.innerText = "";
+          }
+        };
+      }
+    </script>
   </body>
 </html>

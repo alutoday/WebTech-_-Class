@@ -24,12 +24,13 @@ class Model_Student {
         $result = mysqli_query($this->link, $sql);
 
         $row = mysqli_fetch_assoc($result);
-        return new Entity_Student($row['id'], $row['name'], $row['age'], $row['university']);
+        if ($row) return new Entity_Student($row['id'], $row['name'], $row['age'], $row['university']);
+        else return null;
     }
 
-    public function addStudent($name, $age, $university) {
-        $sql = "INSERT INTO sinhvien(name, age, university) VALUES('$name', $age, '$university')";
-        mysqli_query($this->link, $sql);
+    public function addStudent($id,$name, $age, $university) {
+        $sql = "INSERT INTO sinhvien(id,name, age, university) VALUES('$id','$name', $age, '$university')";
+        mysqli_query($this->link, $sql);       
     }
 
     public function updateStudent($id, $name, $age, $university) {

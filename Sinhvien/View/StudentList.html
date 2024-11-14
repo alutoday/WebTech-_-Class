@@ -6,16 +6,23 @@
   <body>
     <h2>Danh sách sinh viên</h2>
     <?php
-        if (!empty($studentList)) { 
-            $i = 1;
-            foreach ($studentList as $student) {
-                echo "<p>" . $i . ". <a href=\"?id=" . $student->id . "\">" . $student->name . "</a></p>";
-                $i++;
-            }
-        } else {
-            echo "<p>No students found.</p>"; 
-        }
-    ?>
+    echo '<table border="1" width="100%">';
+    echo '<caption>Dữ liệu bảng Sinh viên</caption>';
+    echo '<tr><th>ID</th><th>Họ tên</th><th>Tuổi</th><th>Trường</th></tr>';
+
+    if (!empty($studentList)) {
+      foreach ($studentList as $student) {
+        echo "<tr><td>" . $student->id
+             . "</td><td><a href=\"../Controller/C_Student.php?id=" . $student->id . "\">" 
+             . $student->name . "</a></td><td>" 
+             . $student->age . "</td><td>" 
+             . $student->university . "</td></tr>";
+    }
+  } else {
+      echo '<tr><td colspan="4" style="text-align:center;">No students found.</td></tr>';
+  }
+  echo "</table>";
+?>
     <br />
 
     <p><a href="../index.php">Home page</a></p>
