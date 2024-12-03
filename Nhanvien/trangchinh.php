@@ -17,7 +17,7 @@
     <hr>
     <button onclick="window.location.href='capnhatpb.php'"> Cập nhật thông tin phòng ban</button>
     <hr/>
-    <button onclick="window.location.href='capnhatnv.php'">Thêm thông tin nhân viên</button>
+    <button onclick="window.location.href='themnv.php'">Thêm thông tin nhân viên</button>
 
 </body>
 </html>
